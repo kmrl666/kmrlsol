@@ -29,16 +29,23 @@
             <span style="color:#B1A25F" class="contact100-form-title">
                <p style="color:#B1A25F" id='status'></p>
             </span>
-            <form id="formAF">
+            <CENTER><form id="formAF">
                <div class="form-row">
                   <div class="form-group col-md-6"> <label class="mr-sm-2" for="inlineFormCustomSelect2" style="color:#B1A25F">Are you attending?</label> <select class="custom-select mr-sm-2" id="inlineFormCustomSelect2"> </select> </div>
                   <div class="form-group col-md-6"> <label class="mr-sm-2" for="inlineFormCustomSelect" style="color:#B1A25F">Number of Attendee</label> <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"> </select> </div>
                </div>
-            </form>
-            <br>
-            <center><p style="color:#B1A25F" id='RSVPtag'></p></center><br>
-            <div id="sendbtn" class="container-contact100-form-btn"><button class="contact100-form-btn" onclick="update()"><span><i class="fa fa-check m-r-6" aria-hidden="true"></i>Send</span></button>
-            	<img ID="inv" src="" width="800" height="873" id="invBox" style="display:none"><a id="dl" href="" target="_blank" <span ID="einv"><p href="assets/Kamarul-E-Inv.pdf" class="contact100-form-btn">Download E-Invite</p></span></a><br> </div>
+                  <div class="form-row" style="display: block;">
+                  <div class="form-group col-md-6"> <center><p class="mr-sm-2" for="inlineFormCustomSelect" style="color:#B1A25F; " id='RSVPtag'></p></center></div>
+                  <div class="form-group col-md-6">  <div class="form-group col-md-12"><div id="sendbtn" class="container-contact100-form-btn"><button class="contact100-form-btn" onclick="update()"><span><i class="fa fa-check m-r-6" aria-hidden="true"></i>Send</span></button> </div> </div>
+               </div>
+               <div class="form-group col-md-12"><img ID="inv" src="" width="500" height="550" id="invBox" style="display:none"><br></div>
+               <div class="form-group col-md-12"><a id="dl" href="" target="_blank" <span ID="einv"><p href="" class="contact100-form-btn">Download E-Invite</p></span></a> 
+
+
+               </div></form>
+            </form></center>
+</CENTER>
+
          </div>
       </div>
       <div id='ThankYou' style='display:none' class="wrap-contact100">
@@ -46,7 +53,7 @@
             Thank You for Updating.<br>
             <p style="color:#B1A25F">Come back to this page on 28th March 2021 for further details.</p>
             <br>
-            <p style="color:#B1A25F"> This invitation is valid for only <span id="guestss"></span>
+            <p style="color:#B1A25F"> This invitation is valid for only</p> <span id="guestss"></span>
          </span>
       </div>
       <div class="modal fade" id="myModal" role="dialog">
