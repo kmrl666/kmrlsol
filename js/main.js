@@ -35,17 +35,17 @@ function getDetails()
             else if (snapshot.val().Enable != "Disabled" && (snapshot.val().Attending == null || snapshot.val().Attending == ""))
                 {
                    document.getElementById('status').innerHTML += "You have not decided on your attendance";
-                   document.getElementById('RSVPtag').innerHTML += " <ul><li>• Please RSVP by 13th March 2021</li><li>• RSVPs after the date mentioned will not be entertained</li><li>• Unfilled RSVPs after the date mentioned will be considered as \"Not Attending\"</li><li>• Number of guests are limited to what is given</li><li>• Invitations are not transferable</li><li>• Further details will be provided after 28th March 2021</li></ul>";
+                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 13th March 2021<br>• Changes after the date will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "Yes")
                 {
                     document.getElementById('status').innerHTML += "You will be attending with " + (snapshot.val().Amount-1) + " other people, making a party of " + snapshot.val().Amount ;
-                   document.getElementById('RSVPtag').innerHTML += " <ul><li>• Please RSVP by 13th March 2021</li><li>• RSVPs after the date mentioned will not be entertained</li><li>• Unfilled RSVPs after the date mentioned will be considered as \"Not Attending\"</li><li>• Number of guests are limited to what is given</li><li>• Invitations are not transferable</li><li>• Further details will be provided after 28th March 2021</li></ul>";
+                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 13th March 2021<br>• RSVPs after it will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "No")
                 {
                     document.getElementById('status').innerHTML += "You will not be attending the wedding";
-                   document.getElementById('RSVPtag').innerHTML += " <ul><li>• Please RSVP by 13th March 2021</li><li>• RSVPs after the date mentioned will not be entertained</li><li>• Unfilled RSVPs after the date mentioned will be considered as \"Not Attending\"</li><li>• Number of guests are limited to what is given</li><li>• Invitations are not transferable</li><li>• Further details will be provided after 28th March 2021</li></ul>";
+                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 13th March 2021<br>• RSVPs after it will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
                 }
             else
 	            {
@@ -55,13 +55,13 @@ function getDetails()
             if (snapshot.val().Side == "Groom" && snapshot.val().Enable != "Disabled")
             	{
             		document.getElementById("inv").src="images/kmrlcrd.png";
-            		document.getElementById("inv").style.display='Block';
+            		document.getElementById("inv").style.display='inline';
             		document.getElementById("dl").href="assets/Kamarul-E-Inv.pdf";
             	}
             else if (snapshot.val().Side == "Bride" && snapshot.val().Enable != "Disabled")
             	{
             		document.getElementById("inv").src="images/solcrd.png";
-            		document.getElementById("inv").style.display='Block';
+            		document.getElementById("inv").style.display='inline';
             		document.getElementById("dl").href="assets/Soleha-E-Inv.pdf";
             	}
 
