@@ -35,17 +35,17 @@ function getDetails()
             else if (snapshot.val().Enable != "Disabled" && (snapshot.val().Attending == null || snapshot.val().Attending == ""))
                 {
                    document.getElementById('status').innerHTML += "You have not decided on your attendance";
-                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 13th March 2021<br>• Changes after the date will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
+                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 20th March 2021<br>• Changes after the date will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "Yes")
                 {
                     document.getElementById('status').innerHTML += "You will be attending with " + (snapshot.val().Amount-1) + " other people, making a party of " + snapshot.val().Amount ;
-                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 13th March 2021<br>• RSVPs after it will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
+                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 20th March 2021<br>• RSVPs after it will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "No")
                 {
                     document.getElementById('status').innerHTML += "You will not be attending the wedding";
-                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 13th March 2021<br>• RSVPs after it will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
+                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 20th March 2021<br>• RSVPs after it will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
                 }
             else
 	            {
