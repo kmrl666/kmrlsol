@@ -25,21 +25,23 @@ function getDetails()
         {
             document.getElementById('Name').innerHTML += snapshot.val().AttendeeName;
 
-            if (snapshot.val().Enable == "Disabled")
+            if (snapshot.val().Enable == "Disabled" || snapshot.val().Attending == null || snapshot.val().Attending == "")
             	{
-				document.getElementById('status').innerHTML += "Apologies. <br> Reservation is now full. <br> Only 160 Pax on both side is permitted.<br> Try Again Next Time."; 
-            	document.getElementById("formAF").style.display='none';
-            	document.getElementById("sendbtn").style.display='none';
+				document.getElementById('status').innerHTML += "You are no longer invited as you did not RSVP'd in time."; 
+            	//document.getElementById("formAF2").style.display='none';
+            	//document.getElementById("sendbtn").style.display='none';
+                 document.getElementById("all").style.display='none';
+
             	}
 
             else if (snapshot.val().Enable != "Disabled" && (snapshot.val().Attending == null || snapshot.val().Attending == ""))
                 {
                    document.getElementById('status').innerHTML += "You are no longer invited as you did not RSVP'd in time.";
+                   document.getElementById("all").style.display='none';
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "Yes")
                 {
                     document.getElementById('status').innerHTML += "This Invitation is valid only for " + (snapshot.val().Amount) + " Person(s) only";
-                                document.getElementById("formAF").style.display='block';
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "No")
                 {
@@ -55,14 +57,12 @@ function getDetails()
             		document.getElementById("inv").src="images/kmrlcrd.png";
             		document.getElementById("inv").style.display='inline';
             		document.getElementById("dl").href="assets/Kamarul-E-Inv.pdf";
-                                document.getElementById("formAF").style.display='block';
             	}
             else if (snapshot.val().Side == "Bride" && snapshot.val().Enable != "Disabled")
             	{
             		document.getElementById("inv").src="images/solcrd.png";
             		document.getElementById("inv").style.display='inline';
             		document.getElementById("dl").href="assets/Soleha-E-Inv.pdf";
-                                document.getElementById("formAF").style.display='block';
             	}
 
             console.log(snapshot.val().Side);
@@ -75,7 +75,7 @@ function getDetails()
             document.getElementById("mainBody").style.display='Block';
             //document.getElementById('idNum').value = '';
             setTimeout(offOL(), 4000);
-
+            //document.getElementById("formAF").style.display='block';
             document.getElementById("pets").classList.add("form-control-sm");
 
 
