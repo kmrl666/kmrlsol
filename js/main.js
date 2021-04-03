@@ -39,6 +39,7 @@ function getDetails()
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "Yes")
                 {
                     document.getElementById('status').innerHTML += "This Invitation is valid only for " + (snapshot.val().Amount) + " Person(s) only";
+                                document.getElementById("formAF").style.display='block';
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "No")
                 {
@@ -54,12 +55,14 @@ function getDetails()
             		document.getElementById("inv").src="images/kmrlcrd.png";
             		document.getElementById("inv").style.display='inline';
             		document.getElementById("dl").href="assets/Kamarul-E-Inv.pdf";
+                                document.getElementById("formAF").style.display='block';
             	}
             else if (snapshot.val().Side == "Bride" && snapshot.val().Enable != "Disabled")
             	{
             		document.getElementById("inv").src="images/solcrd.png";
             		document.getElementById("inv").style.display='inline';
             		document.getElementById("dl").href="assets/Soleha-E-Inv.pdf";
+                                document.getElementById("formAF").style.display='block';
             	}
 
             console.log(snapshot.val().Side);
@@ -72,7 +75,7 @@ function getDetails()
             document.getElementById("mainBody").style.display='Block';
             //document.getElementById('idNum').value = '';
             setTimeout(offOL(), 4000);
-            document.getElementById("formAF").style.display='block';
+
             document.getElementById("pets").classList.add("form-control-sm");
 
 
