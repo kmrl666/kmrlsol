@@ -1,15 +1,15 @@
-var nameV,passCode;
-var link;
-var timestamp;
-
 function ready()
 {
    document.getElementById('name').value = nameV
 
 }
 
+
+
+
 function getDetails()
 { 
+
 	onOL();
     var dbAdd =firebase.database().ref(document.getElementById('idNum').value)
     passCode = document.getElementById('idNum').value
@@ -34,18 +34,15 @@ function getDetails()
 
             else if (snapshot.val().Enable != "Disabled" && (snapshot.val().Attending == null || snapshot.val().Attending == ""))
                 {
-                   document.getElementById('status').innerHTML += "You have not decided on your attendance";
-                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 20th March 2021<br>• Changes after the date will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
+                   document.getElementById('status').innerHTML += "You are no longer invited as you did not RSVP'd in time.";
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "Yes")
                 {
-                    document.getElementById('status').innerHTML += "You will be attending with " + (snapshot.val().Amount-1) + " other people, making a party of " + snapshot.val().Amount ;
-                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 20th March 2021<br>• RSVPs after it will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
+                    document.getElementById('status').innerHTML += "This Invitation is valid only for " + (snapshot.val().Amount) + " Person(s) only";
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "No")
                 {
-                    document.getElementById('status').innerHTML += "You will not be attending the wedding";
-                   document.getElementById('RSVPtag').innerHTML += "• Please RSVP by 20th March 2021<br>• RSVPs after it will not be considered<br>• Non-Respondants will be considered as \"Not Attending\"<br>• Number of guests are limited to what is given<br>• Invitations are not transferable<br>• More details will be provided after 28th March 2021";
+                    document.getElementById('status').innerHTML += "You will not be attending the wedding.";
                 }
             else
 	            {
@@ -65,17 +62,19 @@ function getDetails()
             		document.getElementById("dl").href="assets/Soleha-E-Inv.pdf";
             	}
 
-            console.log(snapshot.val().Side)
-            noGuests(snapshot.val().Limit, snapshot.val().Amount );
-            attend(snapshot.val().Attending);
+            console.log(snapshot.val().Side);
+            document.getElementById("QRCode").src="https://api.qrserver.com/v1/create-qr-code/?data="+passCode+"&size=200x200&color=B1A25F&bgcolor=394962" 
+            //noGuests(snapshot.val().Limit, snapshot.val().Amount );
+            //attend(snapshot.val().Attending);
             console.log(snapshot.val().AttendeeName);
             document.getElementById("idCheck").style.display='None';
             console.log(passCode);
             document.getElementById("mainBody").style.display='Block';
-            document.getElementById('idNum').value = '';
+            //document.getElementById('idNum').value = '';
             setTimeout(offOL(), 4000);
-
+            document.getElementById("formAF").style.display='block';
             document.getElementById("pets").classList.add("form-control-sm");
+
 
         }
     );}
@@ -83,117 +82,7 @@ function getDetails()
     );
 }
 
-function update()
-{
-	const timeElapsed = Date.now();
-	timestamp= new Date(timeElapsed)
-	console.log(timestamp.toUTCString())
 
-    var updateAttend = document.getElementById("inlineFormCustomSelect2").value;
-    var Guests = document.getElementById("inlineFormCustomSelect").value;
-    console.log(updateAttend)
-    console.log(Guests)
-
-    dbAdd =firebase.database().ref(passCode).update({
-        Attending: updateAttend,
-        Amount: Guests,
-        Updated: timestamp.toUTCString()
-    })
-
-    document.getElementById("mainBody").style.display='None';
-    document.getElementById('guestss').innerHTML += Guests + " Guest(s)"
-    document.getElementById("ThankYou").style.display='Flex';
-}
-
-
-
-function attend(b)
-{   
-    var ans = b;
-    var selectAttend = document.getElementById("inlineFormCustomSelect2");
-
-    if (!ans || ans == "No")
-    {
-        var option = document.createElement("option");
-        option.value = "No";
-        option.text = "No";
-        selectAttend.appendChild(option); 
-
-        var option = document.createElement("option");
-        option.value = "Yes";
-        option.text = "Yes";
-        selectAttend.appendChild(option); 
-    }
-    else
-    {
-        var option = document.createElement("option");
-        option.value = "Yes";
-        option.text = "Yes";
-        selectAttend.appendChild(option);
-
-        var option = document.createElement("option");
-        option.value = "No";
-        option.text = "No";
-        selectAttend.appendChild(option); 
-    }
-
-}
- 
-
-function noGuests(a,b)
-{
-
-    var values = [];
-    
-    if (!b)
-         {
-            values = [];
-         }
-    else
-        {
-            values = [b];
-        }
-
-    var i = 0;
-    for (i = a; i > 0; i--)
-    {
-     if (i == b)
-         {
-        
-         }
-    else
-        {
-            values.push(i.toString())
-        }
-      
-    }  
-
-  var select = document.getElementById("inlineFormCustomSelect");
- 
-  for (const val of values) {
-    var option = document.createElement("option");
-    option.value = val;
-    option.text = val;
-    select.appendChild(option);
-  }
-
-}
-
-function others()
-{
-        var dbAdd =firebase.database().ref(document.getElementById('idNum').value)
-    dbAdd.on
-    ('value',function(snapshot)
-        {
-            document.getElementById('Name').innerHTML += snapshot.val().AttendeeName +"<p>Please RSVP before 10th March 2021</p>";
-            console.log(snapshot.val().AttendeeName);
-            document.getElementById("idCheck").style.display='None';
-            console.log(document.getElementById('idNum').value)
-            document.getElementById("mainBody").style.display='Block';
-            document.getElementById('idNum').value = ''
-        }
-    );
-}
 
 function onOL() {
   document.getElementById("overlay").style.display = "block";
@@ -202,7 +91,6 @@ function onOL() {
 function offOL() {
   document.getElementById("overlay").style.display = "none";
 } 
-
 
 (function ($) {
     "use strict";
@@ -259,3 +147,16 @@ function offOL() {
     
 
 })(jQuery);
+
+    $(function qrGen() { 
+
+        let finalURL = 
+'https://chart.googleapis.com/chart?cht=qr&chl=' + 
+          htmlEncode($('#content').val()) + 
+          '&chs=160x160&chld=L|0' 
+  
+        // Replace the src of the image with 
+        // the QR code image 
+        $('.qr-code').attr('src', finalURL); 
+
+    }); 
