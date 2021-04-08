@@ -41,7 +41,8 @@ function getDetails()
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "Yes")
                 {
-                    document.getElementById('status').innerHTML += "This Invitation is valid only for " + (snapshot.val().Amount) + " Person(s) only";
+                    document.getElementById('status').innerHTML += "This Invitation is valid only for " + (snapshot.val().Amount) + " Person(s) only <br>" ;
+                    document.getElementById('status').innerHTML += "Your seat is " + (snapshot.val().Seat);
                 }
             else if (snapshot.val().Enable != "Disabled" && snapshot.val().Attending == "No")
                 {
